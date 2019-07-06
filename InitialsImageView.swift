@@ -114,8 +114,8 @@ extension UIImageView {
 }
 
 private func initialsFromString(string: String) -> String {
-    var nameComponents = string.uppercased().components(separatedBy: CharacterSet.letters.inverted)
-    nameComponents.removeAll(where: {$0.isEmpty})
+    let lettersAndEmoji = CharacterSet.letters.union(CharacterSet.symbols)
+    var nameComponents = string.uppercased().components(separatedBy: lettersAndEmoji.inverted)
     
     let firstInitial = nameComponents.first?.first
     let lastInitial  = nameComponents.count > 1 ? nameComponents.last?.first : nil
